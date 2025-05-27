@@ -6,10 +6,11 @@ import numpy as np
 import os.path
 
 # ---------- 1. Load artefacts ----------
-model_file = "thyroid_recurrence_lr.pkl"
-if not os.path.exists(model_file):
-    st.error(f"Error: The file '{model_file}' does not exist in the directory. Please ensure it is uploaded or check the file path.")
-    st.stop()
+artefacts = joblib.load("logistic_regression_model.pkl")
+model    = artefacts["model"]
+encoder  = artefacts["encoder"]
+scaler   = artefacts["scaler"]
+exp_cols = artefacts["columns"]      # training-time orde
 
 artefacts = joblib.load(model_file)
 model = artefacts["model"]
